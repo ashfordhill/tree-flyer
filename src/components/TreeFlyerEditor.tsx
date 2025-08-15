@@ -152,7 +152,7 @@ export const TreeFlyerEditor: React.FC<TreeFlyerEditorProps> = ({
   
   const [selectedElement, setSelectedElement] = useState<string | null>(null)
   const [activeTab, setActiveTab] = useState<'text' | 'images' | 'qr'>('text')
-  const [zoom, setZoom] = useState(0.5) // Start at 50% to fit better
+  const [zoom, setZoom] = useState(0.3) // Start at 50% to fit better
   const [dragMode, setDragMode] = useState(true)
   const [alert, setAlert] = useState<{ type: 'success' | 'error', message: string } | null>(null)
   

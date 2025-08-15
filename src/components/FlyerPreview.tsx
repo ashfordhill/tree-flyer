@@ -152,7 +152,7 @@ export const FlyerPreview: React.FC<FlyerPreviewProps> = ({
                   dragMode ? 'default' : 'grab',
           flex: 1,
           display: 'flex',
-          justifyContent: 'center',
+          justifyContent: 'flex-start',
           alignItems: 'center',
           margin: 2
         }}

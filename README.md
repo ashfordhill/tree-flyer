@@ -10,8 +10,10 @@ Visit [this page](https://trees.ashhill.dev) to use.
 ## Example
 
 
-<img src="docs/before.png" alt="before" width="200"/>
-<img src="docs/after.png" alt="after" width="200"/>
+<p align="center">
+  <img src="docs/before.png" alt="before" width="300"/>
+  <img src="docs/after.png" alt="after" width="300"/>
+</p>
 
 ###
 <img src="docs/editor.png" alt="editor" width="600"/>
