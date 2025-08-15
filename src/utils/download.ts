@@ -10,7 +10,7 @@ const loadImage = (src: string): Promise<HTMLImageElement> => {
   })
 }
 
-export const downloadFlyer = async (svgElement: SVGSVGElement, config: TreeFlyerConfig): Promise<string> => {
+export const downloadFlyer = async (_svgElement: SVGSVGElement, config: TreeFlyerConfig): Promise<string> => {
   try {
     // Create a canvas element
     const canvas = document.createElement('canvas')

@@ -1,15 +1,17 @@
 # Tree Flyer Maker
 
-If you have a resource or want to create a point of contact for your neighbors to embrace more tree planting in your neighborhood, create a flyer!
+![](docs/sora-tree-vid.gif)
 
-Visit [this page](https://ashhill.dev/trees) to use.
+If you want to create a point of contact for your neighbors to embrace more tree planting in your neighborhood, create a flyer and pass em around as you go for walks!
+
+Visit [this page](https://trees.ashhill.dev) to use.
 
 
 ## Example
 
 
-<img src="docs/before.png" alt="before" width="250"/>
-<img src="docs/after.png" alt="after" width="250"/>
+<img src="docs/before.png" alt="before" width="200"/>
+<img src="docs/after.png" alt="after" width="200"/>
 
 ###
 <img src="docs/editor.png" alt="editor" width="600"/>
