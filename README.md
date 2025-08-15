@@ -7,14 +7,12 @@ Visit [this page](https://ashhill.dev/trees) to use.
 
 ## Example
 
-### Before
-![before](docs/before.png)
 
-### Editor
-![editor](docs/editor.png)
+<img src="docs/before.png" alt="before" width="250"/>
+<img src="docs/after.png" alt="after" width="250"/>
 
-### After
-![after](docs/after.png)
+###
+<img src="docs/editor.png" alt="editor" width="600"/>
 
 
 ## Features
@@ -25,6 +23,14 @@ Visit [this page](https://ashhill.dev/trees) to use.
 - Save your progress by exporting/importing `.zip` artifacts
 - Generate QR codes for URLs
 - Export as PNG
+
+### Coming Soon (or never. idk)
+
+- DARK MODE 😵
+- Offer some pre-generated decorative images
+- Add more fonts
+- Layers for images (send to back, bring to front, etc.)
+- More templates or upload custom template
 
 ## Tips
 
