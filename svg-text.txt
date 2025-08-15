@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="1024" height="1536" viewBox="0 0 1024 1536"
+     aria-labelledby="title desc" role="img">
+  <title id="title">Nature flyer – editable text only</title>
+  <desc id="desc">The PNG artwork is unchanged. All text is separate SVG text layers you can edit.</desc>
+
+  <!-- Your original PNG as the untouched background -->
+  <image href="background.png" x="0" y="0" width="1024" height="1536" />
+
+  <!-- ===== Text styles you can tweak ===== -->
+  <style>
+    .kicker { font-family: Arial, Helvetica, sans-serif; font-weight: 700; fill:#204b24; letter-spacing:2px; text-anchor:middle; }
+    .title  { font-family: Arial, Helvetica, sans-serif; font-weight: 900; fill:#144d27; letter-spacing:2px; text-anchor:middle; }
+    .shout  { font-family: Arial, Helvetica, sans-serif; font-weight: 800; fill:#1a5a2d; letter-spacing:1px; text-anchor:middle; }
+    .body   { font-family: Arial, Helvetica, sans-serif; font-weight: 400; fill:#1f3d23; text-anchor:middle; }
+    .cta    { font-family: Arial, Helvetica, sans-serif; font-weight: 800; fill:#ffffff; text-anchor:middle; }
+  </style>
+
+  <!-- ===== Editable text layers (positions tuned to the original) ===== -->
+  <!-- Top: "CONNECT WITH" -->
+  <text id="kicker" class="kicker" x="512" y="180" font-size="70">CONNECT WITH</text>
+  <!-- Top: "NATURE" -->
+  <text id="titleText" class="title" x="512" y="330" font-size="185">NATURE</text>
+
+  <!-- Mid: "SAVE THE TREES" -->
+  <text id="subheadline" class="shout" x="512" y="1030" font-size="95">SAVE THE TREES</text>
+
+  <!-- Paragraph (3 lines; delete any you don't want) -->
+  <text id="bodyLine1" class="body" x="512" y="1105" font-size="46">Add your paragraph here. Keep it short and clear.</text>
+  <text id="bodyLine2" class="body" x="512" y="1150" font-size="46">You can use multiple lines or remove them.</text>
+  <text id="bodyLine3" class="body" x="512" y="1195" font-size="46">All text is configurable via IDs.</text>
+
+  <!-- CTA on the dark rounded box -->
+  <text id="website" class="cta" x="512" y="1328" font-size="62">www.example.com</text>
+  <text id="phone" class="cta" x="512" y="1385" font-size="62">(123) 456-7890</text>
+</svg>

@@ -1,0 +1,34 @@
+# Source files
+src/
+public/
+.vscode/
+.idea/
+
+# Development files
+*.log
+.env*
+.eslintrc.*
+tsconfig*.json
+vite.config.ts
+index.html
+
+# Documentation (keep README.md)
+REPO.md
+docs/
+
+# Test files
+__tests__/
+*.test.*
+*.spec.*
+coverage/
+
+# Build tools
+node_modules/
+.git/
+.gitignore
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Keep only dist and essential files for npm package

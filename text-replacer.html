@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Flyer Text Remover (Local)</title>
+<style>
+  body { font: 14px system-ui, sans-serif; margin: 24px; }
+  .row { margin: 8px 0; }
+  canvas { max-width: 100%; border: 1px solid #ccc; border-radius: 8px; }
+  button { padding: 8px 12px; }
+  #status { opacity: 0.8; }
+</style>
+</head>
+<body>
+  <h1>Flyer Text Remover</h1>
+  <div class="row">
+    <input type="file" id="file" accept="image/png" />
+    <button id="dl" disabled>Download cleaned PNG</button>
+  </div>
+  <div id="status">Load your PNG to begin.</div>
+  <div class="row"><canvas id="cv"></canvas></div>
+
+<script>
+const fileInput = document.getElementById('file');
+const btn = document.getElementById('dl');
+const canvas = document.getElementById('cv');
+const ctx = canvas.getContext('2d', { willReadFrequently: true });
+const statusEl = document.getElementById('status');
+
+// Base design dimensions we used to measure regions
+const BASE_W = 1024, BASE_H = 1536;
+
+// Text background colors sampled from your flyer
+const TOP_BG  = '#dee6bc'; // top area "CONNECT WITH / NATURE"
+const MID_BG  = '#dde2ba'; // middle area "SAVE THE TREES" + paragraph
+const DARK_BG = '#38602d'; // bottom rounded CTA bar
+
+// Regions (in base pixels) where original text sits
+const regions = {
+  topRect: { x0: 0,   y0: 107,  x1: 1024, y1: 414 },   // top text block
+  midRect: { x0: 0,   y0: 921,  x1: 1024, y1: 1167 },  // middle text block
+  darkBar: { x0: 71,  y0: 1228, x1: 952,  y1: 1405, r: 24 } // bottom rounded rectangle
+};
+
+function drawRoundRect(ctx, x, y, w, h, r) {
+  const rr = Math.max(0, Math.min(r, Math.min(w, h) / 2));
+  ctx.beginPath();
+  ctx.moveTo(x + rr, y);
+  ctx.lineTo(x + w - rr, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + rr);
+  ctx.lineTo(x + w, y + h - rr);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
+  ctx.lineTo(x + rr, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - rr);
+  ctx.lineTo(x, y + rr);
+  ctx.quadraticCurveTo(x, y, x + rr, y);
+  ctx.closePath();
+}
+
+fileInput.addEventListener('change', async (e) => {
+  const f = e.target.files[0];
+  if (!f) return;
+  statusEl.textContent = 'Loading image…';
+  const url = URL.createObjectURL(f);
+  const img = new Image();
+  img.onload = () => {
+    canvas.width = img.naturalWidth;
+    canvas.height = img.naturalHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+    // scale factors from base design → actual image size
+    const sx = canvas.width / BASE_W;
+    const sy = canvas.height / BASE_H;
+
+    // paint top block
+    ctx.fillStyle = TOP_BG;
+    const t = regions.topRect;
+    ctx.fillRect(Math.round(t.x0*sx), Math.round(t.y0*sy),
+                 Math.round((t.x1 - t.x0)*sx), Math.round((t.y1 - t.y0)*sy));
+
+    // paint middle block
+    ctx.fillStyle = MID_BG;
+    const m = regions.midRect;
+    ctx.fillRect(Math.round(m.x0*sx), Math.round(m.y0*sy),
+                 Math.round((m.x1 - m.x0)*sx), Math.round((m.y1 - m.y0)*sy));
+
+    // paint bottom dark rounded bar
+    ctx.fillStyle = DARK_BG;
+    const d = regions.darkBar;
+    const dx = Math.round(d.x0*sx), dy = Math.round(d.y0*sy);
+    const dw = Math.round((d.x1 - d.x0)*sx), dh = Math.round((d.y1 - d.y0)*sy);
+    const rr = Math.round(d.r * ((sx + sy) / 2));
+    drawRoundRect(ctx, dx, dy, dw, dh, rr);
+    ctx.fill();
+
+    statusEl.textContent = 'Done. Click “Download cleaned PNG”.';
+    btn.disabled = false;
+    URL.revokeObjectURL(url);
+  };
+  img.onerror = () => {
+    statusEl.textContent = 'Could not load that image.';
+    URL.revokeObjectURL(url);
+  };
+  img.src = url;
+});
+
+btn.addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.download = 'nature_flyer_no_text.png';
+  a.href = canvas.toDataURL('image/png');
+  a.click();
+});
+</script>
+</body>
+</html>
